@@ -1,0 +1,5 @@
+.flex-box__second{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

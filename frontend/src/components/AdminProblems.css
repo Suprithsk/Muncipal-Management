@@ -1,0 +1,35 @@
+.problems-div__top{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin: 20px;
+}
+.problem-div__search{
+   margin-right: 10px;
+   width: 200px;
+}
+.problem-div__second{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin: 20px;
+}
+
+.problem-div__actualSearch{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+.problem-div__third{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin: 20px;
+}
+.problems-cards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 20px;
+}
