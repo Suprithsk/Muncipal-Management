@@ -22,7 +22,7 @@ exports.createProblem=async(req,res)=>{
 exports.getProblemByUserId=async(req,res)=>{
     try{
         const {user_id}=req.params;
-        const problems=await Problem.find({user_id:user_id});
+        const problems=await Problem.find({user_id:user_id}).populate('city_id').populate('area_id');
         res.status(200).json(problems);
     }catch(err){
         res.status(500).json({error:err.message});
@@ -49,12 +49,18 @@ const deleteProblem=async(req,res)=>{
 exports.raiseTicketByProblemId=async(req,res)=>{
     try{
         const {problem_id}=req.params;
+        const {user_id}=req.params;
         const {problem_description}=req.body;
         const problem=await Problem.findById(problem_id);
         if(!problem.is_resolved){
             return res.status(400).json({message:"Problem is not resolved yet"});
         }
+        const ticket=await Ticket.findOne({problem_id:problem_id});
+        if(ticket){
+            return res.status(400).json({message:"Ticket already raised for this problem"});
+        }
         const newTicket=new Ticket({
+            user_id,
             problem_id,
             description:problem_description
         });
@@ -67,7 +73,7 @@ exports.raiseTicketByProblemId=async(req,res)=>{
 exports.getTicketByUserId=async(req,res)=>{
     try{
         const {user_id}=req.params;
-        const tickets=await Ticket.find({user_id:user_id});
+        const tickets=await Ticket.find({user_id:user_id}).populate('user_id','username email').populate('problem_id.city_id');
         res.status(200).json(tickets);
     }catch(err){
         res.status(500).json({error:err.message});

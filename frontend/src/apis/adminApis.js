@@ -6,6 +6,7 @@ export const getAllCities = async () => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 
@@ -15,6 +16,7 @@ export const getAreas = async (city_id) => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 
@@ -24,6 +26,7 @@ export const createCity = async (name) => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 export const createArea = async (name, city_id) => {
@@ -32,6 +35,7 @@ export const createArea = async (name, city_id) => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 
@@ -41,6 +45,7 @@ export const getAllProblems = async () => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error;
     }
 }
 
@@ -50,5 +55,16 @@ export const markProblemAsResolved = async (problem_id) => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error;
+    }
+}
+
+export const getAllTIckets=async()=>{
+    try{
+        const response=await axiosInstance.get('/admin/getAllTickets');
+        return response.data;
+    }catch(error){
+        console.error(error);
+        throw error;
     }
 }

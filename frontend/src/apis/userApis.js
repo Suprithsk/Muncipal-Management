@@ -6,6 +6,7 @@ export const getAllCities = async () => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error
     }
 }
 export const getAreasByCityId = async (city_id) => {
@@ -14,6 +15,7 @@ export const getAreasByCityId = async (city_id) => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error
     }
 }
 
@@ -23,6 +25,7 @@ export const createProblem = async (title, description, city_id, area_id, user_i
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error
     }
 }
 
@@ -32,5 +35,16 @@ export const getAllProblemByUserId = async (user_id) => {
         return response.data;
     } catch (error) {
         console.error(error);
+        throw error
+    }
+}
+
+export const createTicketByProblemId = async (problem_id, obj) => {
+    try {
+        const response = await axiosInstance.post(`/user/raiseTicketByProblemId/${problem_id}/66642e8cc51925526ce0ecc2`, {problem_description:obj.problem_description} );
+        return response.data;
+    } catch (error) {
+        console.error('err',error);
+        throw error
     }
 }

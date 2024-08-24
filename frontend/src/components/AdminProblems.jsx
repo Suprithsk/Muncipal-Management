@@ -166,7 +166,7 @@ function AdminProblems() {
             </div>
             <div className="problems-cards">
                 {searchFilterProblems.map(problem => {
-                    return <ProblemCard refreshPage={refreshPage} key={problem._id} problem_id={problem._id} description={problem.description}  title={problem.title} area={problem.area_id} city={problem.city_id} user={problem.user_id} problem_resolved={problem.is_resolved} />
+                    return <ProblemCard isAdmin={true} refreshPage={refreshPage} key={problem._id} problem_id={problem._id} description={problem.description}  title={problem.title} area={problem.area_id} city={problem.city_id} user={problem.user_id} problem_resolved={problem.is_resolved} />
                 })}
             </div>
         </div>

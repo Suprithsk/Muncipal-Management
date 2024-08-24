@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 
 router.post('/createProblem', userController.createProblem);
 router.get('/getProblemByUserId/:user_id', userController.getProblemByUserId);
-router.post('/raiseTicketByProblemId/:problem_id', userController.raiseTicketByProblemId);
+router.post('/raiseTicketByProblemId/:problem_id/:user_id', userController.raiseTicketByProblemId);
 router.get('/getTicketByUserId/:user_id', userController.getTicketByUserId);
 router.get('/getResolvedTickets/:user_id', userController.getResolvedTickets);
 router.get('/getResolvedProblems/:user_id', userController.getResolvedProblems);

@@ -10,8 +10,7 @@ import ProblemCard from "./ProblemCard"
 import { useState } from "react"
 import { useEffect } from "react"
 
-
-import { getAllProblems } from "../apis/adminApis"
+import { getAllProblemByUserId } from "../apis/userApis"
 import { getAllCities, getAreas } from "../apis/adminApis"
 
 function UserProblems() {
@@ -24,11 +23,11 @@ function UserProblems() {
     const [cities, setCities] = useState([])
     const [areas, setAreas] = useState([])
     useEffect(() => {
-        getAllProblems().then(data => {
+        getAllProblemByUserId('66642e8cc51925526ce0ecc2').then(data => {
             setProblems(data)
             setSearchFilterProblems(data)
             console.log(data)
-        })
+        }).catch(err=>console.log(err))
         getAllCities().then(data => {
             setCities(data)
         })
@@ -43,7 +42,7 @@ function UserProblems() {
         })
     }
     const refreshPage = () => {
-        getAllProblems().then(data => {
+        getAllProblemByUserId('66642e8cc51925526ce0ecc2').then(data => {
             setProblems(data)
             const searchFilterProblemsIds=searchFilterProblems.map(problem=>problem._id)
             setSearchFilterProblems(data.filter(problem=>searchFilterProblemsIds.includes(problem._id)))
@@ -78,12 +77,14 @@ function UserProblems() {
         area_id=area_id!==''?area_id:searchAreaId
         searchValue=searchValue!==''?searchValue:searchTerm
         console.log(area_id,searchValue)
+        console.log(problems)
         const newProblems = problems.filter(problem => {
             return (city_id!==''?problem.city_id._id===city_id:true) &&
             (checkAreaId(area_id)?problem.area_id._id === area_id:true) &&
             (searchValue!==''?problem.title.toLowerCase().includes(searchValue.toLowerCase()):true)&&
             (radioValue!=='all'?checkRadioValue(radioValue,problem.is_resolved):true)
         })
+        console.log(newProblems)
         setSearchFilterProblems(newProblems)
     }
     const searchWithCityFilter = (city_id) => {
@@ -166,7 +167,7 @@ function UserProblems() {
             </div>
             <div className="problems-cards">
                 {searchFilterProblems.map(problem => {
-                    return <ProblemCard refreshPage={refreshPage} key={problem._id} problem_id={problem._id} description={problem.description}  title={problem.title} area={problem.area_id} city={problem.city_id} user={problem.user_id} problem_resolved={problem.is_resolved} />
+                    return <ProblemCard isAdmin={false} refreshPage={refreshPage} key={problem._id} problem_id={problem._id} description={problem.description}  title={problem.title} area={problem.area_id} city={problem.city_id} user={problem.user_id} problem_resolved={problem.is_resolved} />
                 })}
             </div>
         </div>

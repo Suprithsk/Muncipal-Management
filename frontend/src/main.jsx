@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import AdminHome from './components/AdminHome.jsx'
 import AdminProblems from './components/AdminProblems.jsx'
 import UserHome from './components/UserHome.jsx'
+import UserProblems from './components/UserProblems.jsx'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path:'/admin/view-problems',
     Component: AdminProblems
+  },
+  {
+    path:'/user/view-problems',
+    Component: UserProblems
   }
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(

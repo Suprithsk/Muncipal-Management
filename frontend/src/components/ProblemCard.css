@@ -1,11 +1,78 @@
-.admin-card{
-    width: 300px;
+.admin-card {
+    width: 500px;
     min-height: 300px;
     padding: 10px 30px;
     margin: 10px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
-}
-.admin-card:hover{
+  }
+  
+  .admin-card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+  }
+  
+  .card-header {
+    background-color: #f7fafc;
+    border-bottom: 1px solid gray;
+    padding: 16px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 16px;
+  }
+  
+  .card-body .text-bold {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .card-body .text {
+    margin-bottom: 4px;
+  }
+  
+  .card-footer {
+    background-color: #f7fafc;
+    border-top: 1px solid gray;
+    padding: 16px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .button.black {
+    background-color: black;
+  }
+  
+  .button.black:hover {
+    background-color: #4a4a4a;
+  }
+  
+  .button.teal {
+    background-color: teal;
+  }
+  
+  .button.teal:hover {
+    background-color: #004d40;
+  }
+  
+  .button.blue {
+    background-color: blue;
+  }
+  
+  .button.blue:hover {
+    background-color: #0039a6;
+  }
+  

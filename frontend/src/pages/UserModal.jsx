@@ -25,6 +25,7 @@ function UserModal({ isOpen, onClose }) {
     const [successMessage, setSuccessMessage] = useState('')
     const [areaOptions, setAreaOptions] = useState([])
     const [areaId, setAreaId] = useState('')
+
     async function fetchData() {
         console.log('fetching data')
         try {
@@ -67,7 +68,6 @@ function UserModal({ isOpen, onClose }) {
         >
             <ModalOverlay />
             <ModalContent>
-
                 <ModalHeader>Add problem</ModalHeader>
                 <ModalCloseButton onClick={onCloseHandler}/>
                 <ModalBody pb={6}>
